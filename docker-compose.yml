@@ -1,0 +1,16 @@
+services:
+  php:
+    build:
+      dockerfile: docker/php/Dockerfile
+    environment:
+      PHP_IDE_CONFIG: "serverName=xdebug-docker"
+      XDEBUG_CONFIG: "client_host=host.docker.internal start_with_request=trigger log_level=0"
+      XDEBUG_MODE: "debug"
+      XDEBUG_SESSION: "PHPSTORM"
+    extra_hosts:
+      - "host.docker.internal:172.30.208.1"
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "8000:8000"
