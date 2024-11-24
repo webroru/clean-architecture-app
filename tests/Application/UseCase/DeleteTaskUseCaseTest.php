@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Application\UseCase;
 
 use App\Application\UseCase\DeleteTaskUseCase;
-use App\Domain\Entity\Task;
+use App\Infrastructure\Doctrine\Entity\InMemoryTask;
 use App\Infrastructure\Repository\InMemoryTaskRepository;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Uid\Uuid;
 
 class DeleteTaskUseCaseTest extends TestCase
 {
@@ -16,11 +17,11 @@ class DeleteTaskUseCaseTest extends TestCase
         $repository = new InMemoryTaskRepository();
         $useCase = new DeleteTaskUseCase($repository);
 
-        $task = new Task('Test Task', 'This is a test description');
+        $task = new InMemoryTask(Uuid::v4(), 'Test Task', 'This is a test description');
         $repository->save($task);
 
-        $useCase($task->getId());
+        $useCase($task->getId()->toRfc4122());
 
-        $this->assertNull($repository->findById($task->getId()), 'Task should not be in the repository.');
+        $this->assertNull($repository->findById($task->getId()->toRfc4122()), 'Task should not be in the repository.');
     }
 }

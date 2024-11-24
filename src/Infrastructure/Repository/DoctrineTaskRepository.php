@@ -4,35 +4,33 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository;
 
-use App\Domain\Entity\Task;
+use App\Infrastructure\Doctrine\Entity\Task;
+use App\Domain\Entity\TaskInterface;
 use App\Domain\Repository\TaskRepositoryInterface;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
-readonly class DoctrineTaskRepository implements TaskRepositoryInterface
+class DoctrineTaskRepository extends ServiceEntityRepository implements TaskRepositoryInterface
 {
-    public function __construct(private EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
+        parent::__construct($registry, Task::class);
     }
 
-    public function findAll(): array
+    public function findById(string $id): ?TaskInterface
     {
-        return $this->entityManager->getRepository(Task::class)->findAll();
+        return $this->find($id);
     }
 
-    public function findById(string $id): ?Task
+    public function save(TaskInterface $task): void
     {
-        return $this->entityManager->getRepository(Task::class)->find($id);
+        $this->getEntityManager()->persist($task);
+        $this->getEntityManager()->flush();
     }
 
-    public function save(Task $task): void
+    public function delete(TaskInterface $task): void
     {
-        $this->entityManager->persist($task);
-        $this->entityManager->flush();
-    }
-
-    public function delete(Task $task): void
-    {
-        $this->entityManager->remove($task);
-        $this->entityManager->flush();
+        $this->getEntityManager()->remove($task);
+        $this->getEntityManager()->flush();
     }
 }

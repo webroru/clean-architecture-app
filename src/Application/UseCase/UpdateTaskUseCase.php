@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
-use App\Domain\Entity\Task;
+use App\Domain\Entity\TaskInterface;
 use App\Domain\Repository\TaskRepositoryInterface;
 
 readonly class UpdateTaskUseCase
@@ -13,7 +13,7 @@ readonly class UpdateTaskUseCase
     {
     }
 
-    public function __invoke(string $id, ?string $title, ?string $description): Task
+    public function __invoke(string $id, ?string $title, ?string $description): TaskInterface
     {
         $task = $this->taskRepository->findById($id);
 

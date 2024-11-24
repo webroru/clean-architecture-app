@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase;
 
-use App\Domain\Entity\Task;
+use App\Domain\Entity\TaskInterface;
 use App\Domain\Repository\TaskRepositoryInterface;
 
 readonly class GetTasksUseCase
@@ -14,7 +14,7 @@ readonly class GetTasksUseCase
     }
 
     /**
-     * @return Task[]
+     * @return TaskInterface[]
      */
     public function __invoke(): array
     {
