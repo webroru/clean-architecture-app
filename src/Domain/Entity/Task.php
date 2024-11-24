@@ -13,7 +13,7 @@ class Task
     public function __construct(
         private string $title,
         private ?string $description = null,
-        private bool $isCompleted = false
+        private bool $isCompleted = false,
     ) {
         $this->id = Uuid::v4();
         $this->setTitle($title);

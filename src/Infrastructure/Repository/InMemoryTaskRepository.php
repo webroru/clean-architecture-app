@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence;
+namespace App\Infrastructure\Repository;
 
 use App\Domain\Entity\Task;
 use App\Domain\Repository\TaskRepositoryInterface;

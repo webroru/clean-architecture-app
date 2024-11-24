@@ -1,0 +1,15 @@
+### Add Task
+POST http://127.0.0.1:8000/task
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Buy milk",
+  "description": "Buy milk at the store"
+}
+
+### Get Tasks
+GET http://127.0.0.1:8000/tasks
+Accept: application/json
+Content-Type: application/json
+

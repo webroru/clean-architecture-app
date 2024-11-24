@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Application\UseCase;
 
 use App\Application\UseCase\CreateTaskUseCase;
-use App\Infrastructure\Persistence\InMemoryTaskRepository;
+use App\Infrastructure\Repository\InMemoryTaskRepository;
 use PHPUnit\Framework\TestCase;
 
 class CreateTaskUseCaseTest extends TestCase
