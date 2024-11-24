@@ -23,12 +23,7 @@ readonly class TaskService
 
     public function createTask(string $title, string $description): void
     {
-        $task = new Task(
-            title: $title,
-            description: $description
-        );
-
-        $this->taskRepository->save($task);
+        $this->taskRepository->save(new Task($title, $description));
     }
 
     public function completeTask(string $id): void

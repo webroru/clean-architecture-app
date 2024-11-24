@@ -17,7 +17,7 @@ class CreateTaskUseCaseTest extends TestCase
         $task = $useCase('Test Task', 'This is a test description.');
 
         $this->assertNotNull($task->getId(), 'Task ID should not be null.');
-        $this->assertEquals('Test Task', $task->getTitle());
+        $this->assertSame('Test Task', $task->getTitle());
         $this->assertSame('This is a test description.', $task->getDescription());
         $this->assertFalse($task->isCompleted(), 'Newly created task should not be completed.');
 

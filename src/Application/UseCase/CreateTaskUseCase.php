@@ -15,10 +15,7 @@ readonly class CreateTaskUseCase
 
     public function __invoke(string $title, ?string $description = null): Task
     {
-        $task = new Task(
-            title: $title,
-            description: $description
-        );
+        $task = new Task($title, $description);
 
         $this->taskRepository->save($task);
 
