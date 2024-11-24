@@ -1,5 +1,5 @@
 ### Add Task
-POST http://127.0.0.1:8000/task
+POST http://127.0.0.1:8000/tasks
 Accept: application/json
 Content-Type: application/json
 
@@ -11,5 +11,17 @@ Content-Type: application/json
 ### Get Tasks
 GET http://127.0.0.1:8000/tasks
 Accept: application/json
+
+### Update Task
+PUT http://127.0.0.1:8000/tasks/1
+Accept: application/json
 Content-Type: application/json
 
+{
+  "title": "Buy beer",
+  "description": "Buy beer at the store"
+}
+
+### Delete Task
+DELETE http://127.0.0.1:8000/tasks/1
+Accept: application/json
