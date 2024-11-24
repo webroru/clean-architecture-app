@@ -24,4 +24,14 @@ class InMemoryTaskRepository implements TaskRepositoryInterface
     {
         return array_values($this->tasks);
     }
+
+    public function findById(string $id): ?Task
+    {
+        return $this->tasks[$id] ?? null;
+    }
+
+    public function delete(Task $task): void
+    {
+        unset($this->tasks[$task->getId()]);
+    }
 }
