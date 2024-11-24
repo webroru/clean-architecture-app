@@ -36,7 +36,7 @@ class TaskController extends AbstractController
         return $this->json($getTasksUseCase());
     }
 
-    #[Route('/api/tasks/{id}', methods: ['PUT'])]
+    #[Route('/tasks/{id}', methods: ['PUT'])]
     public function update(
         string $id,
         Request $request,
@@ -52,7 +52,7 @@ class TaskController extends AbstractController
         }
     }
 
-    #[Route('/api/tasks/{id}', methods: ['DELETE'])]
+    #[Route('/tasks/{id}', methods: ['DELETE'])]
     public function delete(string $id, DeleteTaskUseCase $deleteTaskUseCase): JsonResponse
     {
         try {
