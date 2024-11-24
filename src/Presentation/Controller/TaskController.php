@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Presentation\Controller;
 
 use App\Application\UseCase\CreateTaskUseCase;
 use App\Application\UseCase\DeleteTaskUseCase;
