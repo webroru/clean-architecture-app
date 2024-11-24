@@ -19,8 +19,8 @@ class Task implements TaskInterface
     #[ORM\Column(length: 255)]
     private string $title;
 
-    #[ORM\Column(length: 255)]
-    private string $description;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description;
 
     #[ORM\Column]
     private bool $isCompleted = false;
